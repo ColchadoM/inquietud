@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Escenas/Personaje_principal.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Escenas/envs/hub_world_env.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Escenas/Teleporter.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/HUB_World.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/scene_manager.gd" type="Script" id=5]
+
+[node name="HUB_World" type="Spatial"]
+script = ExtResource( 4 )
+
+[node name="scene_manager" type="Node" parent="."]
+script = ExtResource( 5 )
+
+[node name="hub_world_env" parent="." instance=ExtResource( 2 )]
+
+[node name="Personaje_principal" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.35123, 0 )
+
+[node name="Teleporters" type="Node" parent="."]
+
+[node name="Teleporter" parent="Teleporters" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, -27.2096 )
+teleporter_num = 1
+
+[node name="Teleporter2" parent="Teleporters" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27.5853, -3.97104, -0.0645092 )
+teleporter_num = 2
+
+[node name="Teleporter3" parent="Teleporters" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.4655, -1.57396, 16.7193 )
+teleporter_num = 3
+
+[node name="Teleporter4" parent="Teleporters" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55109, 5.90579, 26.2667 )
+teleporter_num = 4
+
+[node name="Teleporter5" parent="Teleporters" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -27.6412, 5.16926, 0.544683 )
+teleporter_num = 5
+[connection signal="entro_teleporter" from="Teleporters/Teleporter" to="scene_manager" method="_on_Teleporter_entro_teleporter"]
+[connection signal="entro_teleporter" from="Teleporters/Teleporter2" to="scene_manager" method="_on_Teleporter_entro_teleporter"]
+[connection signal="entro_teleporter" from="Teleporters/Teleporter3" to="scene_manager" method="_on_Teleporter_entro_teleporter"]
+[connection signal="entro_teleporter" from="Teleporters/Teleporter4" to="scene_manager" method="_on_Teleporter_entro_teleporter"]
+[connection signal="entro_teleporter" from="Teleporters/Teleporter5" to="scene_manager" method="_on_Teleporter_entro_teleporter"]

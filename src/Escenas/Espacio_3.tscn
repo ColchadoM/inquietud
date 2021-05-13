@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Escenas/Teleporter.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Escenas/Personaje_principal.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Escenas/envs/espacio_3_env.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/scene_manager.gd" type="Script" id=4]
+
+[node name="Espacio_3" type="Spatial"]
+
+[node name="scene_manager" type="Node" parent="."]
+script = ExtResource( 4 )
+
+[node name="espacio_3_env" parent="." instance=ExtResource( 3 )]
+
+[node name="Personaje_principal" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.66501, 0 )
+
+[node name="Teleporter" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.06617, 0, 0 )
+teleporter_num = 0
+[connection signal="entro_teleporter" from="Teleporter" to="scene_manager" method="_on_Teleporter_entro_teleporter"]
